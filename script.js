@@ -2,15 +2,15 @@ function computerSelection() {
     const selection = Math.random();
 
     if (selection <= 0.33 ) { 
-        return "Rock";
+        return "rock";
     }
 
     else if (selection <= 0.67) {
-        return "Paper";
+        return "paper";
     }
 
     else {
-        return "Scissors"
+        return "scissors"
     }
 }
 
@@ -20,7 +20,10 @@ function playerSelection() {
 
     let selection = prompt("Hello! Select your option: Rock, Paper, or Scissors?");
 
-    if (selection === "Rock" || selection === "Paper" || selection === "Scissors") {
+    selection = selection.toLowerCase();
+
+
+    if (selection === "rock" || selection === "paper" || selection === "scissors") {
         return selection;
     }
 

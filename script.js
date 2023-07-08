@@ -14,9 +14,8 @@ function computerSelection() {
     }
 }
 
-const computerChoice = computerSelection();
 
-console.log(computerChoice);
+
 
 function playerSelection() {
 
@@ -34,11 +33,11 @@ function playerSelection() {
     }
 }
 
-const playerChoice = playerSelection();
 
-console.log(playerChoice);
+
 
 function playRound(playerChoice, computerChoice) {
+
     if (playerChoice === "rock") {
         if (computerChoice === "scissors") {
             return "You won this round!";
@@ -63,7 +62,7 @@ function playRound(playerChoice, computerChoice) {
         }
     }
 
-    else if (playerChoice=== "scissors") {
+    else if (playerChoice === "scissors") {
         if (computerChoice === "scissors") {
             return "This round is a tie.";
         }
@@ -76,5 +75,4 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-console.log(playRound(playerChoice, computerChoice));
-
+console.log(playRound(playerSelection(), computerSelection()));

@@ -98,18 +98,12 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
         result = playRound(playerSelection(), computerSelection());
-        console.log(result);
         rounds++;
 
 
         if (result == "Rock beats scissors! Computer won this round!" || result == "Scissors beats paper! Computer won this round!" || result == "Paper beats rock! Computer won this round!") {
             comWins++;
-            console.log(rounds);
-            console.log(comWins);
-            console.log(userWins);
-            console.log(ties);
-
-
+            
             if (rounds == 5 && comWins > userWins) {
                 console.log("Computer won this game :(");
             }
@@ -125,11 +119,6 @@ function game() {
 
         else if (result == "Scissors beats paper! You won this round!" || result == "Paper beats rock! You won this round!" || result == "Rock beats scissors! You won this round!") {
             userWins++;
-            console.log(rounds);
-            console.log(comWins);
-            console.log(userWins);
-            console.log(ties);
-
 
             if (rounds == 5 && comWins > userWins) {
                 console.log("Computer won this game :(");
@@ -147,12 +136,7 @@ function game() {
 
         else {
             ties++;
-            console.log(rounds);
-            console.log(comWins);
-            console.log(userWins);
-            console.log(ties);
-
-
+          
             if (rounds == 5 && comWins > userWins) {
                 console.log("Computer won this game :(");
             }

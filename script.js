@@ -154,10 +154,3 @@ function game() {
 }
 
 game();
-
-//So, everything is working except for the game function. Whenever we attempt to get a result
-//from a round using if/else statements or a for loop, the iteration only occurs within that
-//local scope, so things like UserWins or ComWins don't change once the loop is finished. This
-//effectively results in every game being a tie. We also can't put the if/else statement within
-//the other statments because then every round would return a game result. I really can't figure
-//out how to get around this.

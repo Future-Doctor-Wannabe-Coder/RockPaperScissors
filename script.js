@@ -15,142 +15,179 @@ function computerSelection() {
 }
 
 
+let comWins = 0;
+let userWins = 0;
+let ties = 0;
 
+let results = document.querySelector('.results');
 
-function playerSelection() {
+let uWins = document.createElement('div');
+uWins.classList.add('uWins');
+results.appendChild(uWins);
 
-    let selection = prompt("Hello! Select your option: Rock, Paper, or Scissors?");
+let cWins = document.createElement('div');
+cWins.classList.add('cWins');
+results.appendChild(cWins);
 
-    selection = selection.toLowerCase();
+let roundResult = document.createElement('div');
+roundResult.classList.add('roundResult');
+results.appendChild(roundResult);
 
-
-    if (selection === "rock" || selection === "paper" || selection === "scissors") {
-        return selection;
-    }
-
-    else {
-        console.log("Error. Invalid Response. Enter either Rock, Paper, or Scissors.");
-        x = playerSelection();
-        return x;
-    }
-}
-
-
-
-
+let gameResult = document.createElement('div');
+gameResult.classList.add('gameResult');
+results.appendChild(gameResult);
 
 function playRound(playerChoice, computerChoice) {
 
+
     if (playerChoice === "rock") {
         if (computerChoice === "scissors") {
-            console.log("Rock beats scissors! You won this round!");
-            return "Rock beats scissors! You won this round!";
+            roundResult.textContent = "Rock beats scissors! You won this round!";
+            userWins++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
+            
+            if (userWins == 5) {
+                gameResult.textContent = "You won this game :)";
+                uWins.textContent = "User Wins: " +  userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
+            }
         }
         else if (computerChoice === "paper") {
-            console.log("Paper beats rock! Computer won this round!");
-            return "Paper beats rock! Computer won this round!";
+            roundResult.textContent = "Paper beats rock! Computer won this round.";
+            comWins++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
+            
+            if (comWins == 5) {
+                gameResult.textContent = "Computer won this game :(";
+                uWins.textContent = "User Wins: " + userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
+            }
         }
         else {
-            console.log("Both selected Rock. This round is a tie.");
-            return "Both selected Rock. This round is a tie.";
+            roundResult.textContent = "Both selected Rock. This round is a tie.";
+            ties++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
         }
     }
 
     else if (playerChoice === "paper") {
         if (computerChoice === "scissors") {
-            console.log("Scissors beats paper! Computer won this round!");
-            return "Scissors beats paper! Computer won this round!";
+            roundResult.textContent = "Scissor beats paper! Computer won this round!";
+            comWins++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
+            
+            if (comWins == 5) {
+                gameResult.textContent = "Computer won this game :(";
+                uWins.textContent = "User Wins: " + userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
+            }
         }
         else if (computerChoice === "paper") {
-            console.log("Both selected paper. This round is a tie.");
-            return "Both selected paper. This round is a tie.";
+            roundResult.textContent = "Both selected paper. This round is a tie.";
+            ties++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
         }
         else {
-            console.log("Paper beats rock! You won this round!");
-            return "Paper beats rock! You won this round!";
+            roundResult.textContent = "Paper beats rock! You won this round!";
+            userWins++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
+            if (userWins == 5) {
+                gameResult.textContent = "You won this game :)";
+                uWins.textContent = "User Wins: " + userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
+            }
         }
     }
 
     else if (playerChoice === "scissors") {
         if (computerChoice === "scissors") {
-            console.log("Both selected scissors. This round is a tie.");
-            return "Both selected scissors. This round is a tie.";
+            roundResult.textContent = "Both selected scissors. This round is a tie.";
+            ties++;
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
         }
         else if (computerChoice === "paper") {
-            console.log("Scissors beats paper! You won this round!");
-            return "Scissors beats paper! You won this round!";
-        }
-        else {
-             console.log("Rock beats scissors! Computer won this round!");
-             return "Rock beats scissors! Computer won this round!";
-        }
-    }
-}
-
-
-
-function game() {
-
-    let comWins = 0;
-        let userWins = 0;
-        let ties = 0;
-        let rounds = 0;
-
-    for (let i = 0; i < 5; i++) {
-        result = playRound(playerSelection(), computerSelection());
-        rounds++;
-
-
-        if (result == "Rock beats scissors! Computer won this round!" || result == "Scissors beats paper! Computer won this round!" || result == "Paper beats rock! Computer won this round!") {
-            comWins++;
-            
-            if (rounds == 5 && comWins > userWins) {
-                console.log("Computer won this game :(");
-            }
-
-            else if (rounds == 5 && userWins > comWins) {
-                console.log("You won this game :)");
-            }
-
-            else if (rounds == 5 && userWins == comWins) {
-                console.log("This game was a tie.");
-            }
-        }
-
-        else if (result == "Scissors beats paper! You won this round!" || result == "Paper beats rock! You won this round!" || result == "Rock beats scissors! You won this round!") {
+            roundResult.textContent = "Scissors beats paper! You won this round!";
             userWins++;
-
-            if (rounds == 5 && comWins > userWins) {
-                console.log("Computer won this game :(");
+            uWins.textContent = "User Wins: " + userWins.toString();
+            cWins.textContent = "Computer Wins: " + comWins.toString();
+            gameResult.textContent = "";
+            if (userWins == 5) {
+                gameResult.textContent = "You won this game :)";
+                uWins.textContent = "User Wins: " + userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
             }
-
-            else if (rounds == 5 && userWins > comWins) {
-                console.log("You won this game :)");
-            }
-
-            else if (rounds == 5 && userWins == comWins) {
-                console.log("This game was a tie.");
-            }
-
         }
-
         else {
-            ties++;
-          
-            if (rounds == 5 && comWins > userWins) {
-                console.log("Computer won this game :(");
-            }
+             comWins++;
+             uWins.textContent = "User Wins: " + userWins.toString();
+             cWins.textContent = "Computer Wins: " + comWins.toString();
+             roundResult.textContent = "Rock beats scissors! Computer won this round!";
+             gameResult.textContent = "";
 
-            else if (rounds == 5 && userWins > comWins) {
-                console.log("You won this game :)");
-            }
-
-            else if (rounds == 5 && userWins == comWins) {
-                console.log("This game was a tie.");
+             if (comWins == 5) {
+                gameResult.textContent = "Computer won this game :(";
+                uWins.textContent = "User Wins: " + userWins.toString();
+                cWins.textContent = "Computer Wins: " + comWins.toString();
+                comWins = 0;
+                userWins = 0;
+                ties = 0;
             }
         }
     }
-
 }
 
-game();
+let selection; 
+
+let rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+    selection = "rock";
+    playRound(selection, computerSelection());
+});
+
+let paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+    selection = "paper";
+    playRound(selection, computerSelection());
+});
+
+let scissors = document.querySelector("#scissors");
+scissors.addEventListener('click', () => {
+    selection = "scissors";
+    playRound(selection, computerSelection());
+});
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(10, 158, 99);
+    display: flex;
+    flex-direction: column;
+    color: rgb(rgb(243, 6, 6), green, blue);
+}
+
+.roundResult {
+    text-decoration: solid;
+    color: blue;
+}
+
